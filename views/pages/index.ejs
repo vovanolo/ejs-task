@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Список завдань</title>
+  </head>
+  <body>
+    <h1>Список завдань</h1>
+    <ul>
+      <% products.forEach(function(task) { %>
+        <li><%= task.name %> <% if (task.done) { %>(виконано)<% } %>
+          <form action="/tasks/<%= task._id %>/delete" method="post">
+            <input type="submit" value="Видалити">
+          </form>
+        </li>
+      <% }); %>
+    </ul>
+    <h2>Додати нове завдання</h2>
+    <form action="/tasks" method="post">
+      <label for="name">Назва завдання:</label>
+      <input type="text" name="name" required>
+      <input type="submit" value="Додати">
+    </form>
+  </body>
+</html>
